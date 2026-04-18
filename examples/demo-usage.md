@@ -1,25 +1,35 @@
-# Demo Usage
+# 使用示例
 
-## Example Prompt
+## 示例任务提示词
 
 ```text
-Please use the financial-statement-entry skill to fill the financial statement template in this folder.
+请使用 financial-statement-entry skill，将当前目录中的审计报告数据录入到已有 Excel 财务报表模板中。
 
-Requirements:
-1. Handle consolidated and parent-company statements separately.
-2. Read each year only from the corresponding audit report.
-3. Preserve workbook formatting and formulas.
-4. Fill the supplementary sheet items if the audit report discloses:
-   - depreciation expense
-   - amortization of intangible assets
-   - amortization of long-term deferred expenses
-5. Reconcile major totals after entry and trace mismatches back to source rows.
+要求：
+1. 合并口径和本部/母公司口径分开处理。
+2. 每个年份列只能取自对应年份的审计报告，不使用较晚年份报表中的期初数回填上一年。
+3. 只填写输入单元格，保留 Excel 原有格式、公式、边框、列宽和工作表结构。
+4. 如果模板中存在补充资料表，请同步录入：
+   - 计提折旧额
+   - 无形资产摊销额
+   - 长期待摊费用摊销
+5. 录入后核对资产负债表、利润表和现金流量表的关键汇总值。
+6. 如果汇总不一致，请向上追溯到具体明细行，不要直接改写总计行。
+7. 最后说明完成了哪些文件、采用了什么年份和口径规则、做了哪些勾稽校验、是否发现异常。
 ```
 
-## Expected Behavior
+## 预期执行效果
 
-- Read the workbook structure first
-- Locate statement pages in the audit reports
-- Map source items to workbook rows
-- Fill only input cells
-- Verify rollups before completion
+- 先读取 Excel 模板结构，识别年份列、输入列和公式行。
+- 再定位审计报告中的合并报表和母公司报表。
+- 建立审计报告项目与 Excel 行之间的映射关系。
+- 只写入需要录入的输入单元格，不覆盖公式行。
+- 完成录入后，对关键汇总项进行勾稽校验。
+
+## 常见检查点
+
+- 是否把合并口径和本部/母公司口径混填。
+- 是否把审计报告比较数误作为上一年正式取数来源。
+- 是否把空白项目误填为 `0`。
+- 是否覆盖了 Excel 模板中的合计公式。
+- 是否只校验最终总额，而没有核对中间汇总项。
