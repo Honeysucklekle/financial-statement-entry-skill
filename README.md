@@ -33,7 +33,8 @@
 ├─ SKILL.md
 └─ references/
    ├─ template-guide.md
-   └─ missing-items.md
+   ├─ missing-items.md
+   └─ reconciliation.md
 ```
 
 Windows 目录通常为 `C:\Users\<your-user>\.codex\skills\financial-statement-entry\`。再将仓库的 `template/financial-statement-template.xlsx` 复制到任务目录，连同来源报告交给 Codex。用户另有指定模板时优先使用用户模板。
@@ -49,10 +50,12 @@ Windows 目录通常为 `C:\Users\<your-user>\.codex\skills\financial-statement-
 
 ## 校验与交付
 
-- 保留每个来源项目的主体、期间、口径、页码、金额单位与目标位置，区分原披露数和重述比较数。
+- 保留每个来源项目的主体、期间、口径、页码、金额单位与目标位置，各年度取对应年度报表期末/本期数，不用后续报表期初或比较数替代；重述差异另列说明。
 - 核对三大报表的中间小计、最终合计和内部勾稽关系，同时检查新增科目覆盖、父子项重复和符号方向。
 - 检查补充资料与指标依赖。缺少加权平均净资产、利息明细、期初余额或最新一期月份时，不把公式显示的 0 当作真实指标。
 - 使用可用计算引擎重算、重新打开并复查输出。不能重算或有未解决项目时，明确说明具体限制。
+
+完整性及验收细则见 [完整性与勾稽复核](skill/references/reconciliation.md)。另外检查其他综合收益分组、平均余额的实际日期及指标是否年化；仅增补最新一期时保留未要求更新的历史列。
 
 ## 仓库结构
 
@@ -65,7 +68,8 @@ financial-statement-entry-skill/
 │  ├─ SKILL.md
 │  └─ references/
 │     ├─ template-guide.md
-│     └─ missing-items.md
+│     ├─ missing-items.md
+│     └─ reconciliation.md
 ├─ template/
 │  └─ financial-statement-template.xlsx
 └─ examples/
